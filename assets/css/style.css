@@ -1689,10 +1689,13 @@ button:hover ~ .cursor-ring {
 }
 
 @media (max-width: 767px) {
+    
+    .about-btn {
+        display: none !important;
+    }
     .header-area {
         padding: 20px 0;
     }
-
     .header-area .navbar {
         position: fixed;
         width: 100%;
