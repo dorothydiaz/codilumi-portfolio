@@ -21,6 +21,9 @@ This is my personal portfolio website where I showcase my projects, skills, and 
 - Practice front-end development
 - Continuously improve UI/UX
 
+## 📷 Preview
+<img width="1894" height="872" alt="image" src="https://github.com/user-attachments/assets/f107b652-2d2b-4a51-99e9-609c75e62032" />
+
 ---
 
 More updates coming soon!
