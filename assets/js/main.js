@@ -14,7 +14,6 @@
 
 })(jQuery);
 
-
 var div = document.createElement("div");
     div.id="preloader",
     div.className="preloader",
@@ -48,3 +47,34 @@ function animate() {
 }
 animate();
 
+document.addEventListener("touchstart", createParticles);
+document.addEventListener("click", createParticles);
+
+function createParticles(e) {
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+    for (let i = 0; i < 8; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 60;
+
+        particle.style.left = x + "px";
+        particle.style.top = y + "px";
+
+        particle.style.setProperty("--dx", Math.cos(angle) * distance);
+        particle.style.setProperty("--dy", Math.sin(angle) * distance);
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 800);
+    }
+}
+
+if (window.matchMedia("(pointer: coarse)").matches) {
+    // don't initialize custom cursor
+}

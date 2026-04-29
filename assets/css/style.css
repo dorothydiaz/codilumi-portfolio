@@ -110,7 +110,6 @@ ol {
     position: relative;
     border-radius: 30px;
     background: #fdfcfe;
-
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.35s ease;
 }
@@ -1498,6 +1497,31 @@ button:hover ~ .cursor-ring {
     border-color: rgba(168, 85, 247, 0.8);
 }
 
+.particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp 0.8s ease-out forwards;
+    background: radial-gradient(circle, #a855f7, #ec4899, transparent);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(
+            calc(var(--dx) * 1px),
+            calc(var(--dy) * 1px)
+        ) scale(0);
+        opacity: 0;
+    }
+}
+
 @keyframes marquee {
     
     from { transform: translateX(0); }
@@ -1688,6 +1712,14 @@ button:hover ~ .cursor-ring {
     }
 }
 
+@media (max-width: 768px), (pointer: coarse) {
+    .cursor-dot,
+    .cursor-ring,
+    .cursor-trail {
+        display: none !important;
+    }
+}
+
 @media (max-width: 767px) {
     
     .about-btn {
@@ -1702,7 +1734,6 @@ button:hover ~ .cursor-ring {
         background: #FBFBFC;
         z-index: 15;
         overflow-x: hidden;
-        /* height: 80px; */
         transform-origin: 50% 50% 0px;
         top: 0;
         left: 0;
@@ -1711,10 +1742,8 @@ button:hover ~ .cursor-ring {
         justify-content: center;
         opacity: 0;
         visibility: hidden;
-        /* max-height: 0; */
         will-change: transform;
 
-        /* transform: translate3d(0px, -11.4272px, 0px) scale(1, 1) scale(1, 0.945615); */
         transform: translate3d(0px, -300px, 0px) scale(1, 1) scale(1, 0.945615);
         transform: translate3d(0px, -300px, 0px) scale(1, 0.5) scale(1, 0.5);
         transition: .5s
@@ -1722,9 +1751,7 @@ button:hover ~ .cursor-ring {
     .header-area .navbar.active {
         opacity: 1;
         visibility: visible;
-        /* height: min-content; */
         transform: translate3d(0px, 0, 0px) scale(1, 1) scale(1, 1);
-        /* max-height: 90vh; */
     }
     .header-area .navbar .menu {
         flex-direction: column;
@@ -1833,8 +1860,6 @@ button:hover ~ .cursor-ring {
         width: auto;
     }
     .info-box.about-client-box .clients {
-        /* display: grid !important;
-        grid-template-columns: 1fr 1fr; */
         flex-wrap: wrap;
         justify-content: center !important;
     }
